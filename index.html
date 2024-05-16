@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* General styles */
+body {
+    font-family: Verdana;
+    color: #01010a;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    background-color: #e5e5e5;
+    padding: 15px;
+    text-align: center;
+}
+
+.project-button {
+    display: block;
+    margin: 10px 0;
+}
+
+.project-button:focus {
+    outline: none;
+}
+
+.project-button:hover {
+    background-color: #06b03f;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+.list-container {
+    margin-bottom: 20px;
+}
+
+.myTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.row {
+    display: table-row;
+}
+
+.cell {
+    display: table-cell;
+    padding: 5px 10px;
+    border: 2px solid #1c1515;
+    font-weight: normal;
+}
+
+.cell:first-child {
+    font-weight: bold;
+}
+
+/* Desktop layout */
+@media (min-width: 768px) {
+    .wrapper {
+        display: flex;
+    }
+
+    .menu {
+        flex: 1;
+        order: 1; /* Menu on right */
+    }
+
+    .content {
+        flex: 2;
+        order: 2; /* Description of Project in the middle */
+    }
+
+    .about {
+        flex: 1;
+        order: 3; /* About is on left */
+    }
+}
+
+/* Styles for smartphone layout */
+@media (max-width: 767px) {
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .menu {
+    order: 1;
+  }
+  .description {
+    order: 2;
+  }
+  .content {
+    order: 3;
+  }
+}
+
+
+   
+
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Advanced Internet Programming</h1>
+        <h2> Project 4 - Responsive Web Page</h2>
+    </div>
+    
+    <div class="menu">
+        <h2>List of projects</h2>
+        <button class="project-button" onclick="showProject('project1')">Project 1</button>
+        <button class="project-button" onclick="showProject('project2')">Project 2</button>
+        <button class="project-button" onclick="showProject('project3')">Project 3</button>
+        <h3>Description of project</h3>
+        <p>In this project requires us to create a responsive website that contains multiple
+            sections which will toggle the view format depending on the device or the width 
+            of the browser tab
+        </p>
+        <p>
+            The website created should also showcase the previous tasks which can be selected
+            from the navigation bar on the left
+        </p>
+    </div>
+
+    <div class="content" id="mainContent">
+        <!-- Project content will be loaded here -->
+    
+    </div>
+
+    <div class="about">
+        <h2>About</h2>
+        <p> This course covers fundamentals of HTML, JavaScript, and CSS
+            providing learners with essential skills for web development.
+
+        </p>
+    </div>
+
+    <!-- Project 1 -->
+    <div class="project-content" id="project1">
+        <h1>Project 1</h1>
+        <table>
+            <tr>
+                <td>First name:</td>
+                <td><input type="text" id="fname1"></td>
+            </tr>
+            <tr>
+                <td>Last name:</td>
+                <td><input type="text" id="lname1"></td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td><input list="agelist1" id="age1">
+                    <datalist id="agelist1">
+                        <option value="0-18">
+                        <option value="18-35">
+                        <option value="35-50">
+                        <option value="over 50">
+                    </datalist>
+                </td>
+            </tr>
+            <tr>
+                <td>Sex:</td>
+                <td>
+                    <input type="radio" id="male1" name="sex1" value="Male"><label for="male1">Male</label>
+                    <input type="radio" id="female1" name="sex1" value="Female"><label for="female1">Female</label>
+                </td>
+            </tr>
+            <tr>
+                <td>Hobby:</td>
+                <td>
+                    <input type="checkbox" id="reading1" name="hobby1" value="Reading">
+                    <label for="reading1">Reading</label>
+                    <input type="checkbox" id="sport1" name="hobby1" value="Sport">
+                    <label for="sport1">Sport</label>
+                    <input type="checkbox" id="math1" name="hobby1" value="Math">
+                    <label for="math1">Math</label>
+                    <input type="checkbox" id="modelling1" name="hobby1" value="Modelling">
+                    <label for="modelling1">Modelling</label>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="showpopup(1)">OK</button></td>
+                <td><button onclick="resetForm(1)">Cancel</button></td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-content" id="project2">
+        <h1>Project 2</h1>
+        <div class="myTable">
+            <div class="row">
+                <div class="cell">First name:</div>
+                <div class="cell"><input type="text" id='fname2'></div>
+            </div>
+            <div class="row">
+                <div class="cell">Last name:</div>
+                <div class="cell"><input type="text" id='lname2'></div>
+            </div>
+            <div class="row">
+                <div class="cell">Age:</div>
+                <div class="cell">
+                    <input list="agelist2" id="age2">
+                    <datalist id="agelist2">
+                        <option value="0-18"></option>
+                        <option value="18-35"></option>
+                        <option value="35-50"></option>
+                        <option value="over 50"></option>
+                    </datalist>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">Sex:</div>
+                <div class="cell">
+                    <input type="radio" id="male2" name="sex2" value="Male">
+                    <label for="male2"> Male </label>
+                    <input type="radio" id="female2" name="sex2" value="Female">
+                    <label for="female2"> Female </label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell">Hobby:</div>
+                <div class="cell">
+                    <input type="checkbox" id="reading2" name="hobby2" value="Reading">
+                    <label for="reading2">Reading</label>
+                    <input type="checkbox" id="sport2" name="hobby2" value="Sport">
+                    <label for="sport2">Sport</label>
+                    <input type="checkbox" id="math2" name="hobby2" value="Math">
+                    <label for="math2">Math</label>
+                    <input type="checkbox" id="modelling2" name="hobby2" value="Modelling">
+                    <label for="modelling2">Modelling</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="cell"><button onclick="popUp(2)">OK</button></div>
+                <div class="cell"><button onclick="resetForm(2)">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-content" id="project3">
+        <h1>Project 3</h1>
+        <h2>Comparison of Sorting Methods</h2>
+        <div id="randNums"></div>
+        <div id="selectionSort"></div>
+        <div id="mergeSort"></div>
+    </div>
+
+    <div class="footer" style="background-color: #966c6c; text-align: center; padding: 10px; position: fixed; bottom: 0; width: 100%;">© by 
+    Firdavs Khabibulloev  ID: </div>
+
+    <script>
+        // Function to show the selected project content
+        function showProject(projectId) {
+            // Hide all project content
+            var projects = document.getElementsByClassName("project-content");
+            for (var i = 0; i < projects.length; i++) {
+                projects[i].style.display = "none";
+            }
+            // Show the selected project content
+            var project = document.getElementById(projectId);
+            if (project) {
+                project.style.display = "block";
+            }
+        }
+
+        // Function to handle form submission for Project 1
+        function showpopup(projectNum) {
+            var fname = document.getElementById('fname' + projectNum).value;
+            var lname = document.getElementById('lname' + projectNum).value;
+            var age = document.getElementById('age' + projectNum).value;
+            var sex = document.querySelector('input[name="sex' + projectNum + '"]:checked');
+            sex = sex ? sex.value : "Not selected";
+            var hobbies = "";
+            var checkboxes = document.querySelectorAll('input[name="hobby' + projectNum + '"]:checked');
+            checkboxes.forEach(function (checkbox) {
+                hobbies += checkbox.value + " ";
+            });
+            alert('Form submission:\n\nName: ' + fname + ' ' + lname + '\nAge: ' + age + '\nSex: ' + sex + '\nHobbies: ' + hobbies);
+        }
+
+        // Function to handle form submission for Project 2
+        function popUp(projectNum) {
+            var firstName = document.getElementById("fname" + projectNum).value;
+            var lastName = document.getElementById("lname" + projectNum).value;
+            var age = document.getElementById("age" + projectNum).value;
+            var sex = document.querySelector('input[name="sex' + projectNum + '"]:checked');
+            sex = sex ? sex.value : "Not selected";
+            var hobbies = [];
+            var checkboxes = document.querySelectorAll('input[name="hobby' + projectNum + '"]:checked');
+            for (var i = 0; i < checkboxes.length; i++) {
+                hobbies.push(checkboxes[i].value);
+            }
+            var data = "First Name: " + firstName + "\n" +
+                "Last Name: " + lastName + "\n" +
+                "Age: " + age + "\n" +
+                "Sex: " + sex + "\n" +
+                "Hobbies: " + hobbies.join(", ");
+            alert(data);
+        }
+
+        // Function to reset form for both projects
+        function resetForm(projectNum) {
+            document.getElementById("fname" + projectNum).value = '';
+            document.getElementById("lname" + projectNum).value = '';
+            document.getElementById("age" + projectNum).value = '';
+            var checkboxes = document.querySelectorAll('input[name="hobby' + projectNum + '"]:checked');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        }
+
+        // Function to execute the page
+        function executePage() {
+            alert("Page executed!");
+            // You can add more functionality here if needed
+        }
+
+        // Project 3 Javascript
+        const nums = [];
+        const amountNums = prompt("Enter the amount of numbers you'd like to generate: ");
+        const rangeNums = 1000; // The range of numbers will be between 0 and 1000
+
+        for (let i = 0; i < amountNums; i++) {
+            nums.push(Math.floor(Math.random() * rangeNums));
+        }
+
+        // Display the randomly generated numbers
+        const randNumsElement = document.getElementById("randNums");
+        randNumsElement.innerHTML = `<b>Randomly generated numbers:</b><br>  ${nums}`;
+
+        // Implementation of selection sort
+        function selectionSort(arr) {
+            const start = window.performance.now();
+            for (let i = 0; i < arr.length - 1; i++) {
+                let minIdx = i;
+                for (let j = i + 1; j < arr.length; j++) {
+                    if (arr[j] < arr[minIdx]) {
+                        minIdx = j;
+                    }
+                }
+                // Swap elements only if the minimum index has changed
+                if (minIdx !== i) {
+                    [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+                }
+            }
+            const end = window.performance.now();
+            const elapsed = end - start;
+            const textElement = document.getElementById("selectionSort");
+            textElement.innerHTML = `<br><b>Selection sort:</b><br>  ${arr}<br>  Execution time: ${elapsed.toFixed(2)} milliseconds`;
+        }
+
+        // Merge function to merge two sorted arrays
+        function merge(left, right) {
+            let resultArray = [],
+                leftIndex = 0,
+                rightIndex = 0;
+
+            while (leftIndex < left.length && rightIndex < right.length) {
+                if (left[leftIndex] < right[rightIndex]) {
+                    resultArray.push(left[leftIndex]);
+                    leftIndex++;
+                } else {
+                    resultArray.push(right[rightIndex]);
+                    rightIndex++;
+                }
+            }
+
+            return resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+        }
+
+        // Merge sort function
+        function mergeSort(arr) {
+            if (arr.length <= 1) {
+                return arr;
+            }
+
+            const middle = Math.floor(arr.length / 2);
+            const left = arr.slice(0, middle);
+            const right = arr.slice(middle);
+
+            return merge(mergeSort(left), mergeSort(right));
+        }
+
+        // Display the merge sort results
+        function displayMergeSortResults(nums) {
+            const start = window.performance.now();
+            const sortedNums = mergeSort(nums);
+            const end = window.performance.now();
+            const elapsed = end - start;
+            const textElement = document.getElementById("mergeSort");
+            textElement.innerHTML = `<br><b>Merge sort:</b><br>  ${sortedNums}<br>  Execution time: ${elapsed.toFixed(2)} milliseconds`;
+        }
+
+        // Call the sorting functions
+        selectionSort([...nums]);
+        displayMergeSortResults([...nums]);
+    </script>
+
+</body>
+
+</html>
